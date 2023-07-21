@@ -111,14 +111,17 @@
 
                             <!-- Checkbox Answer List -->
                             <div style="margin-top: 30px; display: none;" id="checkboxListAns">
-                                <div class="mb-3" style="margin-bottom: 10px;">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
+                                <div id="addAnotherOptionDiv">
+                                    <div class="mb-3" style="margin-bottom: 10px;">
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
+                                    </div>
+                                    <div class="mb-3" style="margin-bottom: 10px;">
+                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
+                                    </div>
                                 </div>
-                                <div class="mb-3" style="margin-bottom: 10px;">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
-                                </div>
+                               
                                 <div>
-                                    <button type="button" class="btn btn-outline-primary" onclick=""> + Add another answer</button>
+                                    <button type="button" class="btn btn-outline-primary" onclick="addAnotherAnswer()"> + Add another answer</button>
                                 </div>
                                 
                             </div>
@@ -166,6 +169,7 @@
     <!-- Custom JavaScript Code -->
     <script>
         let set = true;
+        // Other Option click
         function otherOptionClick(){
             //alert("Hello");
             if(set){
@@ -178,6 +182,17 @@
                 
         }
 
+        // Add Another Answer
+        function addAnotherAnswer(){
+            let el = document.createElement("div");
+            el.innerHTML=`<div class="mb-3" style="margin-bottom: 10px;">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
+                        </div>`;
+            document.getElementById("addAnotherOptionDiv").appendChild(el);
+
+        }
+
+        // Change Question Type
         function changeQuestionType(value){
             console.log(value);
             if(value.length>1){
