@@ -89,44 +89,59 @@
                     <div style="width:60%; margin: 10px auto;">
                         <div>
                             <label for="exampleFormControlTextarea1" class="form-label" style="font-size: large; font-weight: 600;">Select Question Types : *</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Please select question types </option>
-                                <option value="paragraph">Paragraph</option>
-                                <option value="checkboxlist">Checkbox List</option>
+                            <select class="form-select" aria-label="Default select example" onchange="changeQuestionType(value)">
+                                <option value="">Please select question types </option>
+                                <option value="paragraph" >Paragraph</option>
+                                <option value="checkboxlist" >Checkbox List</option>
                             </select>
                         </div>
-                        <div style="margin-top: 30px;">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label">Type Question Here </label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="type question here">
+
+                        <div id="question-answer-div" style="display: none;">
+                            <!-- Enter question section -->
+                            <div style="margin-top: 30px;">
+                                <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Type Question Here </label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="type question here">
+                                </div>
                             </div>
+
+                            <!-- Checkbox Answer List -->
+                            <div style="margin-top: 30px; display: none;" id="checkboxListAns">
+                                <div class="mb-3" style="margin-bottom: 10px;">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
+                                </div>
+                                <div class="mb-3" style="margin-bottom: 10px;">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-outline-primary"> + Add another answer</button>
+                                </div>
+                                
+                            </div>
+
+                            <div style="margin-top: 30px; display: none;" id="paragraphAns">
+                                <textarea class="form-control" id="paragraphAnsInput" rows="3" placeholder="Please enter answer"></textarea>
+                            </div>
+
+                            <!-- User Control Features -->
+                            <div style="margin-top: 20px;">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;">
+                                    <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
+                                    Allow user to specify their own answer
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;">
+                                    <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
+                                    This field is required
+                                    </label>
+                                </div>
+                            </div>
+
                         </div>
-                        <div style="margin-top: 30px;">
-                            <div class="mb-3" style="margin-bottom: 10px;">
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
-                            </div>
-                            <div class="mb-3" style="margin-bottom: 10px;">
-                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
-                            </div>
-                            <div>
-                                <button type="button" class="btn btn-outline-primary"> + Add another answer</button>
-                            </div>
-                            
-                        </div>
-                        <div style="margin-top: 20px;">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;">
-                                <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
-                                Allow user to specify their own answer
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;">
-                                <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
-                                This field is required
-                                </label>
-                            </div>
-                        </div>
+
+                        
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -143,6 +158,28 @@
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <!-- Custom JavaScript Code -->
+    <script>
+
+        function changeQuestionType(value){
+            console.log(value);
+            if(value.length>1){
+                document.getElementById("question-answer-div").style.display = "block"; 
+                if(value==="checkboxlist"){
+                    document.getElementById("checkboxListAns").style.display = "block";
+                    document.getElementById("paragraphAns").style.display = "none";
+                }
+                if(value==="paragraph"){
+                    document.getElementById("paragraphAns").style.display = "block";
+                    document.getElementById("checkboxListAns").style.display = "none";
+                }
+            }else{
+                document.getElementById("question-answer-div").style.display = "none"; 
+            }
+        }
+
+    </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
