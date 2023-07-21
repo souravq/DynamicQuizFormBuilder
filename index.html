@@ -63,11 +63,15 @@
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;" onclick="otherOptionClick()">
                         <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
                         Others
                         </label>
                     </div>
+                    <div style="display: none; margin-top: 20px;" id="othersOptionDiv">
+                        <textarea class="form-control" id="othersOption" rows="2"></textarea>
+                    </div>
+
                 </div>
                 <div style="margin-top: 30px; display: flex; justify-content: space-around;">
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Question</button>
@@ -114,7 +118,7 @@
                                     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-outline-primary"> + Add another answer</button>
+                                    <button type="button" class="btn btn-outline-primary" onclick=""> + Add another answer</button>
                                 </div>
                                 
                             </div>
@@ -161,6 +165,18 @@
 
     <!-- Custom JavaScript Code -->
     <script>
+        let set = true;
+        function otherOptionClick(){
+            //alert("Hello");
+            if(set){
+                document.getElementById("othersOptionDiv").style.display = "block";
+                set = false;
+            }else{
+                document.getElementById("othersOptionDiv").style.display = "none";
+                set = true;
+            }
+                
+        }
 
         function changeQuestionType(value){
             console.log(value);
