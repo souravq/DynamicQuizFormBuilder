@@ -14,7 +14,7 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">QUIZ</a>
+              <a class="navbar-brand" href="#">QUIZ APP</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -39,31 +39,31 @@
             <form>
                 <div class="mb-3">
                     <label for="exampleFormControlTextarea1" class="form-label" style="font-size: large; font-weight: 600;">Please tell us about yourself *</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    <textarea class="form-control" id="aboutYourselfText" rows="3"></textarea>
                 </div>
-                <div>
-                    <label for="exampleFormControlTextarea1" class="form-label" style="font-size: large; font-weight: 600;">Please select the languages you know *</label>
+                <div class="questionOptionsDiv">
+                    <label for="exampleFormControlTextarea1" class="form-label" style="font-size: large; font-weight: 600;" id="firstQuestion">Please select the languages you know *</label>
                
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;">
+                        <input class="form-check-input" type="checkbox" value="typescript" id="flexCheckDefault" style="width: 25px; height: 25px;">
                         <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
                         Typescript
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;">
+                        <input class="form-check-input" type="checkbox" value="python" id="flexCheckDefault" style="width: 25px; height: 25px;">
                         <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
                         Python
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;">
+                        <input class="form-check-input" type="checkbox" value="c#" id="flexCheckDefault" style="width: 25px; height: 25px;">
                         <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
                         C#
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;" onclick="otherOptionClick()">
+                        <input class="form-check-input" type="checkbox" value="others" id="flexCheckDefault" style="width: 25px; height: 25px;" onclick="otherOptionClick()">
                         <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
                         Others
                         </label>
@@ -76,7 +76,11 @@
                 <div style="margin-top: 30px; display: flex; justify-content: space-around;">
                     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Question</button>
 
-                    <button type="button" class="btn btn-primary">Review my Answers ></button>
+                    <button type="button" class="btn btn-primary" onclick="reviewAnswer()">Review my Answers ></button>
+                </div>
+                <div id="ansDiv" style="display: none; margin-top: 30px;">
+                    <h4>Preview Section</h4>
+
                 </div>
             </form>
           </div>
@@ -210,6 +214,34 @@
             }
         }
 
+        function reviewAnswer(){
+
+            let aboutYourselfTextData = document.getElementById("aboutYourselfText").value;
+            let data = document.querySelector(".questionOptionsDiv");
+            let selectedStr = "";
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
+            selected = Array.from(checked).map((x) => {
+                let val = x.value;
+                if(val==="others"){
+                    let othersOptionValue = document.getElementById('othersOption').value;
+                    selectedStr += `Others - ${othersOptionValue}`;
+                }else{
+                    selectedStr += val;
+                }
+                selectedStr += ", ";
+                
+            });
+            let newStr = selectedStr.slice(0,selectedStr.length-2);
+            document.getElementById("ansDiv").style.display="block";
+
+            let firstQuestion = document.getElementById("firstQuestion").innerText;
+            let firstQuestionText = firstQuestion.slice(0, firstQuestion.length-1);
+            let el = document.createElement("div");
+            let str = `Question: Please tell us about yourself? <br/> Answer: ${aboutYourselfTextData} <br/>`;
+            str += `Question: ${firstQuestionText}? <br/> Answer: ${newStr}`;
+            el.innerHTML = str;
+            document.getElementById("ansDiv").appendChild(el);
+        }
     </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
