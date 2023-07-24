@@ -1,247 +1,447 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
 
-    <title>Dynamic Quiz Application Form!</title>
+    <title>Dynamic Quiz Application Form Builder!</title>
   </head>
   <body>
     <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">QUIZ APP</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-                  </li>
-                  
-                </ul>
-                <form class="d-flex">
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-danger" type="submit">Search</button>
-                </form>
-              </div>
-            </div>
-          </nav>
-
-          <h1 style="text-align: center; margin-top: 20px;">Dynamic Quiz Application Form!</h1>
-
-          <div style="width:50%; margin: 50px auto; border: 2px solid gray; padding: 20px; border-radius: 20px; box-shadow: inset;">
-            <form>
-                <div class="mb-3">
-                    <label for="exampleFormControlTextarea1" class="form-label" style="font-size: large; font-weight: 600;">Please tell us about yourself *</label>
-                    <textarea class="form-control" id="aboutYourselfText" rows="3"></textarea>
-                </div>
-                <div class="questionOptionsDiv">
-                    <label for="exampleFormControlTextarea1" class="form-label" style="font-size: large; font-weight: 600;" id="firstQuestion">Please select the languages you know *</label>
-               
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="typescript" id="flexCheckDefault" style="width: 25px; height: 25px;">
-                        <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
-                        Typescript
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="python" id="flexCheckDefault" style="width: 25px; height: 25px;">
-                        <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
-                        Python
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="c#" id="flexCheckDefault" style="width: 25px; height: 25px;">
-                        <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
-                        C#
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="others" id="flexCheckDefault" style="width: 25px; height: 25px;" onclick="otherOptionClick()">
-                        <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
-                        Others
-                        </label>
-                    </div>
-                    <div style="display: none; margin-top: 20px;" id="othersOptionDiv">
-                        <textarea class="form-control" id="othersOption" rows="2"></textarea>
-                    </div>
-
-                </div>
-                <div style="margin-top: 30px; display: flex; justify-content: space-around;">
-                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add New Question</button>
-
-                    <button type="button" class="btn btn-primary" onclick="reviewAnswer()">Review my Answers ></button>
-                </div>
-                <div id="ansDiv" style="display: none; margin-top: 30px;">
-                    <h4>Preview Section</h4>
-
-                </div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">QUIZ APP</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-danger" type="submit">Search</button>
             </form>
           </div>
-        
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add a New Questions</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div style="width:60%; margin: 10px auto;">
-                        <div>
-                            <label for="exampleFormControlTextarea1" class="form-label" style="font-size: large; font-weight: 600;">Select Question Types : *</label>
-                            <select class="form-select" aria-label="Default select example" onchange="changeQuestionType(value)">
-                                <option value="">Please select question types </option>
-                                <option value="paragraph" >Paragraph</option>
-                                <option value="checkboxlist" >Checkbox List</option>
-                            </select>
-                        </div>
-
-                        <div id="question-answer-div" style="display: none;">
-                            <!-- Enter question section -->
-                            <div style="margin-top: 30px;">
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Type Question Here </label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="type question here">
-                                </div>
-                            </div>
-
-                            <!-- Checkbox Answer List -->
-                            <div style="margin-top: 30px; display: none;" id="checkboxListAns">
-                                <div id="addAnotherOptionDiv">
-                                    <div class="mb-3" style="margin-bottom: 10px;">
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
-                                    </div>
-                                    <div class="mb-3" style="margin-bottom: 10px;">
-                                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
-                                    </div>
-                                </div>
-                               
-                                <div>
-                                    <button type="button" class="btn btn-outline-primary" onclick="addAnotherAnswer()"> + Add another answer</button>
-                                </div>
-                                
-                            </div>
-
-                            <div style="margin-top: 30px; display: none;" id="paragraphAns">
-                                <textarea class="form-control" id="paragraphAnsInput" rows="3" placeholder="Please enter answer"></textarea>
-                            </div>
-
-                            <!-- User Control Features -->
-                            <div style="margin-top: 20px;">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;">
-                                    <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
-                                    Allow user to specify their own answer
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="width: 25px; height: 25px;">
-                                    <label class="form-check-label" for="flexCheckDefault" style="padding-top: 5px; padding-left: 10px;">
-                                    This field is required
-                                    </label>
-                                </div>
-                            </div>
-
-                        </div>
-
-                        
-                    </div>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Save changes</button>
-                </div>
-            </div>
-            </div>
         </div>
+      </nav>
 
+      <h1 style="text-align: center; margin-top: 20px">
+        Dynamic Quiz Application Form Builder!
+      </h1>
+
+      <div
+        style="
+          width: 50%;
+          margin: 50px auto;
+          border: 2px solid gray;
+          padding: 20px;
+          border-radius: 20px;
+          box-shadow: inset;
+        "
+      >
+        <form>
+          <div class="mb-3">
+            <label
+              for="exampleFormControlTextarea1"
+              class="form-label"
+              style="font-size: large; font-weight: 600"
+              >Please tell us about yourself *</label
+            >
+            <textarea
+              class="form-control"
+              id="aboutYourselfText"
+              rows="3"
+            ></textarea>
+          </div>
+          <div class="questionOptionsDiv">
+            <div>
+              <label
+                for="exampleFormControlTextarea1"
+                class="form-label"
+                style="font-size: large; font-weight: 600"
+                id="firstQuestion"
+                >Please select the languages you know *</label
+              >
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="typescript"
+                  id="flexCheckDefault"
+                  style="width: 25px; height: 25px"
+                />
+                <label
+                  class="form-check-label"
+                  for="flexCheckDefault"
+                  style="padding-top: 5px; padding-left: 10px"
+                >
+                  Typescript
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="python"
+                  id="flexCheckDefault"
+                  style="width: 25px; height: 25px"
+                />
+                <label
+                  class="form-check-label"
+                  for="flexCheckDefault"
+                  style="padding-top: 5px; padding-left: 10px"
+                >
+                  Python
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="c#"
+                  id="flexCheckDefault"
+                  style="width: 25px; height: 25px"
+                />
+                <label
+                  class="form-check-label"
+                  for="flexCheckDefault"
+                  style="padding-top: 5px; padding-left: 10px"
+                >
+                  C#
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value="others"
+                  id="flexCheckDefault"
+                  style="width: 25px; height: 25px"
+                  onclick="otherOptionClick()"
+                />
+                <label
+                  class="form-check-label"
+                  for="flexCheckDefault"
+                  style="padding-top: 5px; padding-left: 10px"
+                >
+                  Others
+                </label>
+              </div>
+              <div style="display: none; margin-top: 20px" id="othersOptionDiv">
+                <textarea
+                  class="form-control"
+                  id="othersOption"
+                  rows="2"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              margin-top: 30px;
+              display: flex;
+              justify-content: space-around;
+            "
+          >
+            <button
+              type="button"
+              class="btn btn-outline-primary"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
+              Add New Question
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="reviewAnswer()"
+            >
+              Review my Answers >
+            </button>
+          </div>
+          <div id="ansDiv" style="display: none; margin-top: 30px">
+            <h4>Preview Section</h4>
+          </div>
+        </form>
+      </div>
+
+      <!--Add New Question Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Add a New Questions
+              </h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div style="width: 60%; margin: 10px auto">
+                <div>
+                  <label
+                    for="exampleFormControlTextarea1"
+                    class="form-label"
+                    style="font-size: large; font-weight: 600"
+                    >Select Question Types : *</label
+                  >
+                  <select
+                    class="form-select"
+                    aria-label="Default select example"
+                    onchange="changeQuestionType(value)"
+                  >
+                    <option value="">Please select question types</option>
+                    <option value="paragraph">Paragraph</option>
+                    <option value="checkboxlist">Checkbox List</option>
+                  </select>
+                </div>
+
+                <div id="question-answer-div" style="display: none">
+                  <!-- Enter question section -->
+                  <div style="margin-top: 30px">
+                    <div class="mb-3">
+                      <label for="exampleFormControlInput1" class="form-label"
+                        >Type Question Here
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="exampleFormControlInput1"
+                        placeholder="type question here"
+                      />
+                    </div>
+                  </div>
+
+                  <!-- Checkbox Answer List -->
+                  <div
+                    style="margin-top: 30px; display: none"
+                    id="checkboxListAns"
+                  >
+                    <div id="addAnotherOptionDiv">
+                      <div class="mb-3" style="margin-bottom: 10px">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="addOption1"
+                          placeholder="Add Answer Option 1"
+                        />
+                      </div>
+                      <div class="mb-3" style="margin-bottom: 10px">
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="addOption2"
+                          placeholder="Add Answer Option 2"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btn-outline-primary"
+                        onclick="addAnotherAnswer()"
+                      >
+                        + Add another answer
+                      </button>
+                    </div>
+                  </div>
+
+                  <div
+                    style="margin-top: 30px; display: none"
+                    id="paragraphAns"
+                  >
+                    <textarea
+                      class="form-control"
+                      id="paragraphAnsInput"
+                      rows="3"
+                      placeholder="Please enter answer"
+                    ></textarea>
+                  </div>
+
+                  <!-- User Control Features -->
+                  <div style="margin-top: 20px">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                        style="width: 25px; height: 25px"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="flexCheckDefault"
+                        style="padding-top: 5px; padding-left: 10px"
+                      >
+                        Allow user to specify their own answer
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                        style="width: 25px; height: 25px"
+                      />
+                      <label
+                        class="form-check-label"
+                        for="flexCheckDefault"
+                        style="padding-top: 5px; padding-left: 10px"
+                      >
+                        This field is required
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button type="button" class="btn btn-success">
+                Save changes
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
 
     <!-- Custom JavaScript Code -->
     <script>
-        let set = true;
-        // Other Option click
-        function otherOptionClick(){
-            //alert("Hello");
-            if(set){
-                document.getElementById("othersOptionDiv").style.display = "block";
-                set = false;
-            }else{
-                document.getElementById("othersOptionDiv").style.display = "none";
-                set = true;
-            }
-                
+      let set = true;
+      // Other Option click
+      function otherOptionClick() {
+        //alert("Hello");
+        if (set) {
+          document.getElementById("othersOptionDiv").style.display = "block";
+          set = false;
+        } else {
+          document.getElementById("othersOptionDiv").style.display = "none";
+          set = true;
         }
+      }
 
-        // Add Another Answer
-        function addAnotherAnswer(){
-            let el = document.createElement("div");
-            el.innerHTML=`<div class="mb-3" style="margin-bottom: 10px;">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Add Answer Option">
+      let data = 3;
+      // Add Another Answer
+      function addAnotherAnswer() {
+        if (data > 5) {
+          alert("Answer Options limit are 5");
+          return;
+        }
+        let el = document.createElement("div");
+        el.innerHTML = `<div class="mb-3" style="margin-bottom: 10px;">
+                            <input type="text" class="form-control" id="addOption${data}" placeholder="Add Answer Option ${data}">
                         </div>`;
-            document.getElementById("addAnotherOptionDiv").appendChild(el);
+        data++;
+        document.getElementById("addAnotherOptionDiv").appendChild(el);
+      }
 
+      // Change Question Type
+      function changeQuestionType(value) {
+        console.log(value);
+        if (value.length > 1) {
+          document.getElementById("question-answer-div").style.display =
+            "block";
+          if (value === "checkboxlist") {
+            document.getElementById("checkboxListAns").style.display = "block";
+            document.getElementById("paragraphAns").style.display = "none";
+          }
+          if (value === "paragraph") {
+            document.getElementById("paragraphAns").style.display = "block";
+            document.getElementById("checkboxListAns").style.display = "none";
+          }
+        } else {
+          document.getElementById("question-answer-div").style.display = "none";
         }
+      }
 
-        // Change Question Type
-        function changeQuestionType(value){
-            console.log(value);
-            if(value.length>1){
-                document.getElementById("question-answer-div").style.display = "block"; 
-                if(value==="checkboxlist"){
-                    document.getElementById("checkboxListAns").style.display = "block";
-                    document.getElementById("paragraphAns").style.display = "none";
-                }
-                if(value==="paragraph"){
-                    document.getElementById("paragraphAns").style.display = "block";
-                    document.getElementById("checkboxListAns").style.display = "none";
-                }
-            }else{
-                document.getElementById("question-answer-div").style.display = "none"; 
-            }
-        }
+      function reviewAnswer() {
+        let aboutYourselfTextData =
+          document.getElementById("aboutYourselfText").value;
+        let data = document.querySelector(".questionOptionsDiv");
+        let selectedStr = "";
+        const checked = document.querySelectorAll(
+          'input[type="checkbox"]:checked'
+        );
+        selected = Array.from(checked).map((x) => {
+          let val = x.value;
+          if (val === "others") {
+            let othersOptionValue =
+              document.getElementById("othersOption").value;
+            selectedStr += `Others - ${othersOptionValue}`;
+          } else {
+            selectedStr += val;
+          }
+          selectedStr += ", ";
+        });
+        let newStr = selectedStr.slice(0, selectedStr.length - 2);
+        document.getElementById("ansDiv").style.display = "block";
 
-        function reviewAnswer(){
-
-            let aboutYourselfTextData = document.getElementById("aboutYourselfText").value;
-            let data = document.querySelector(".questionOptionsDiv");
-            let selectedStr = "";
-            const checked = document.querySelectorAll('input[type="checkbox"]:checked');
-            selected = Array.from(checked).map((x) => {
-                let val = x.value;
-                if(val==="others"){
-                    let othersOptionValue = document.getElementById('othersOption').value;
-                    selectedStr += `Others - ${othersOptionValue}`;
-                }else{
-                    selectedStr += val;
-                }
-                selectedStr += ", ";
-                
-            });
-            let newStr = selectedStr.slice(0,selectedStr.length-2);
-            document.getElementById("ansDiv").style.display="block";
-
-            let firstQuestion = document.getElementById("firstQuestion").innerText;
-            let firstQuestionText = firstQuestion.slice(0, firstQuestion.length-1);
-            let el = document.createElement("div");
-            let str = `Question: Please tell us about yourself? <br/> Answer: ${aboutYourselfTextData} <br/>`;
-            str += `Question: ${firstQuestionText}? <br/> Answer: ${newStr}`;
-            el.innerHTML = str;
-            document.getElementById("ansDiv").appendChild(el);
-        }
+        let firstQuestion = document.getElementById("firstQuestion").innerText;
+        let firstQuestionText = firstQuestion.slice(
+          0,
+          firstQuestion.length - 1
+        );
+        let el = document.createElement("div");
+        let str = `Question: Please tell us about yourself? <br/> Answer: ${aboutYourselfTextData} <br/>`;
+        str += `Question: ${firstQuestionText}? <br/> Answer: ${newStr}`;
+        el.innerHTML = str;
+        document.getElementById("ansDiv").appendChild(el);
+      }
     </script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
